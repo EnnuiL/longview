@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "page.langeweile.longview.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"CommandEncoderMixin",
+		"GlCommandEncoderMixin",
+		"GlConstMixin",
+		"GlDeviceMixin",
+		"ProjectionMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

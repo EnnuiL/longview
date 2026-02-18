@@ -1,0 +1,30 @@
+modLoader = "javafml"
+loaderVersion = "*"
+license = "MPL-2.0"
+
+[[mixins]]
+config = "longview.mixins.json"
+
+[[mods]]
+modId = "longview"
+version = "${version}"
+displayName = "Longview"
+logoFile = "assets/longview/icon.png"
+authors = "Ennui Langeweile"
+description = """
+Fixes flickering, jaggies and Z-fighting on long distances using the Reverse Z technique.
+"""
+
+[[dependencies.longview]]
+modId = "neoforge"
+type = "required"
+versionRange = "[26.1.0-alpha,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.longview]]
+modId = "minecraft"
+type = "required"
+versionRange = "[26.0,)"
+ordering = "NONE"
+side = "CLIENT"

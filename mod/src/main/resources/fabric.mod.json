@@ -1,0 +1,26 @@
+{
+	"schemaVersion": 1,
+	"id": "longview",
+	"version": "${version}",
+	"name": "Longview",
+	"description": "Fixes flickering, jaggies and Z-fighting on long distances using the Reverse Z technique.",
+	"authors": [
+		"Ennui Langeweile"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/longview",
+		"issues": "https://github.com/EnnuiL/longview/issues",
+		"sources": "https://github.com/EnnuiL/longview"
+	},
+	"icon": "assets/longview/icon.png",
+	"license": "MPL-2.0",
+	"environment": "*",
+	"entrypoints": {},
+	"mixins": [
+      "longview.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": ">=26.1-"
+	}
+}
