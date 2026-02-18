@@ -39,7 +39,7 @@ public class GlCommandEncoderMixin implements LongviewDevice {
 
     @WrapMethod(method = "clearDepthTexture")
     private void invertClearColorTextureDepthBuffer(GpuTexture depthTexture, double clearDepth, Operation<Void> original) {
-        original.call(depthTexture, clearDepth);
+        original.call(depthTexture, 1.0 - clearDepth);
     }
 
     @ModifyExpressionValue(method = "applyPipelineState", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/pipeline/RenderPipeline;getDepthBiasConstant()F"))

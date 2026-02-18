@@ -49,6 +49,11 @@ public class GlDeviceMixin implements LongviewDevice {
 		return original || this.enabledExtensions.contains("GL_ARB_clip_control");
 	}
 
+	@Override
+	public boolean supportsReverseZ() {
+		return true;
+	}
+
 	// This tries to only patch post/transparency.fsh so that it accounts for reversed Zs
 	// This fixes Improved Transparency
 	@ModifyExpressionValue(method = "compileShader", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/preprocessor/GlslPreprocessor;injectDefines(Ljava/lang/String;Lnet/minecraft/client/renderer/ShaderDefines;)Ljava/lang/String;"))

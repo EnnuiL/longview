@@ -8,6 +8,7 @@
     "GlConstMixin",
     "GlDeviceMixin",
     "ProjectionMixin",
+    "compat.GpuDeviceBackendMixin",
     "compat.GpuDeviceMixin"
   ],
   "injectors": {
