@@ -12,6 +12,8 @@ This is accomplished through two techniques:
 
 This ensures that the depth buffer will be evenly distributed no matter the distance, fixing all sorts of glitches that happens from a distance!
 
+This mod is available on [Modrinth](https://modrinth.com/mod/longview) and [CurseForge](https://www.curseforge.com/minecraft/mc-mods/longview).
+
 ## Compatibility
 
 This mod requires a device supporting either the `GL_ARB_CLIP_CONTROL` extension or OpenGL 4.5 in order to apply Technique 1.
