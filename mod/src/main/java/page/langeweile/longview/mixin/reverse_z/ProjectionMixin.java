@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package page.langeweile.longview.mixin;
+package page.langeweile.longview.mixin.reverse_z;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import page.langeweile.longview.api.LongviewDevice;
 
 @Mixin(Projection.class)
-public class ProjectionMixin {
+public abstract class ProjectionMixin {
 	@WrapOperation(method = "getMatrix", at = @At(value = "INVOKE", target = "Lorg/joml/Matrix4f;setPerspective(FFFFZ)Lorg/joml/Matrix4f;"))
 	private Matrix4f invertPerspectiveMatrixZ(Matrix4f instance, float fovy, float aspect, float zNear, float zFar, boolean zZeroToOne, Operation<Matrix4f> original) {
 		if (((LongviewDevice) RenderSystem.getDevice()).supportsReverseZ()) {

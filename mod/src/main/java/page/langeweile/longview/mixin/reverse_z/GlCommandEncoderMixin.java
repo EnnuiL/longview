@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package page.langeweile.longview.mixin;
+package page.langeweile.longview.mixin.reverse_z;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,7 +14,7 @@ import page.langeweile.longview.api.LongviewDevice;
 import java.util.OptionalDouble;
 
 @Mixin(targets = "com.mojang.blaze3d.opengl.GlCommandEncoder")
-public class GlCommandEncoderMixin implements LongviewDevice {
+public abstract class GlCommandEncoderMixin implements LongviewDevice {
     @ModifyVariable(
             method = "createRenderPass(Ljava/util/function/Supplier;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalInt;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalDouble;)Lcom/mojang/blaze3d/systems/RenderPassBackend;",
             at = @At("HEAD"),
