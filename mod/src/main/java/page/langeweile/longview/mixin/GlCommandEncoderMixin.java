@@ -8,9 +8,10 @@ package page.langeweile.longview.mixin;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import page.langeweile.longview.api.LongviewCommandEncoder;
 
 @Mixin(targets = "com.mojang.blaze3d.opengl.GlCommandEncoder")
-public class GlCommandEncoderMixin {
+public class GlCommandEncoderMixin implements LongviewCommandEncoder {
     @ModifyExpressionValue(method = "applyPipelineState", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/pipeline/RenderPipeline;getDepthBiasConstant()F"))
     private float invertDepthBiasConstant(float original) {
         return -original;
@@ -19,5 +20,10 @@ public class GlCommandEncoderMixin {
     @ModifyExpressionValue(method = "applyPipelineState", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/pipeline/RenderPipeline;getDepthBiasScaleFactor()F"))
     private float invertDepthBiasScaleFactor(float original) {
         return -original;
+    }
+
+    @Override
+    public boolean supportsLongview() {
+        return true;
     }
 }

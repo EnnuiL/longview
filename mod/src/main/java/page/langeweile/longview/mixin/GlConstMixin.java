@@ -45,4 +45,18 @@ public class GlConstMixin {
 	private static int modifyLequalDepthTestFunction(int original) {
 		return GL11C.GL_GEQUAL;
 	}
+
+	// Technically this could be used but as far as I can tell, this is completely optional and isn't required to make Reverse Z work
+	/*
+	@ModifyExpressionValue(
+			method = "toGlInternalId",
+			at = @At(
+					value = "CONSTANT",
+					args = "intValue=33191"
+			)
+	)
+	private static int modifyDepthComponent(int original) {
+		return GL30C.GL_DEPTH_COMPONENT32F;
+	}
+	 */
 }
