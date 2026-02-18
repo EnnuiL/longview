@@ -6,40 +6,37 @@
 package page.langeweile.longview.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.mojang.blaze3d.systems.RenderPassBackend;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import page.langeweile.longview.api.LongviewDevice;
 
 import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.function.Supplier;
 
 @Mixin(targets = "com.mojang.blaze3d.opengl.GlCommandEncoder")
 public class GlCommandEncoderMixin implements LongviewDevice {
-    @WrapMethod(method = "createRenderPass(Ljava/util/function/Supplier;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalInt;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalDouble;)Lcom/mojang/blaze3d/systems/RenderPassBackend;")
-    private RenderPassBackend invertCreateRenderPassDepthBuffer(Supplier<String> label, GpuTextureView colorTexture, OptionalInt clearColor, @Nullable GpuTextureView depthTexture, OptionalDouble clearDepth, Operation<RenderPassBackend> original) {
-        return original.call(label, colorTexture, clearColor, depthTexture, clearDepth.isPresent() ? OptionalDouble.of(1.0 - clearDepth.getAsDouble()) : clearDepth);
+    @ModifyVariable(
+            method = "createRenderPass(Ljava/util/function/Supplier;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalInt;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalDouble;)Lcom/mojang/blaze3d/systems/RenderPassBackend;",
+            at = @At("HEAD"),
+            argsOnly = true,
+            ordinal = 0
+    )
+    private OptionalDouble invertCreateRenderPassDepthBuffer(OptionalDouble original) {
+        return original.isPresent() ? OptionalDouble.of(1.0 - original.getAsDouble()) : original;
     }
 
-    @WrapMethod(method = "clearColorAndDepthTextures(Lcom/mojang/blaze3d/textures/GpuTexture;ILcom/mojang/blaze3d/textures/GpuTexture;D)V")
-    private void invertClearColorAndDepthTexturesDepthBuffer(GpuTexture colorTexture, int clearColor, GpuTexture depthTexture, double clearDepth, Operation<Void> original) {
-        original.call(colorTexture, clearColor, depthTexture, 1.0 - clearDepth);
-    }
-
-    @WrapMethod(method = "clearColorAndDepthTextures(Lcom/mojang/blaze3d/textures/GpuTexture;ILcom/mojang/blaze3d/textures/GpuTexture;DIIII)V")
-    private void invertClearColorAndDepthTexturesDepthBuffer(GpuTexture colorTexture, int clearColor, GpuTexture depthTexture, double clearDepth, int regionX, int regionY, int regionWidth, int regionHeight, Operation<Void> original) {
-        original.call(colorTexture, clearColor, depthTexture, 1.0 - clearDepth, regionX, regionY, regionWidth, regionHeight);
-    }
-
-    @WrapMethod(method = "clearDepthTexture")
-    private void invertClearColorTextureDepthBuffer(GpuTexture depthTexture, double clearDepth, Operation<Void> original) {
-        original.call(depthTexture, 1.0 - clearDepth);
+    @ModifyVariable(
+            method = {
+                    "clearColorAndDepthTextures(Lcom/mojang/blaze3d/textures/GpuTexture;ILcom/mojang/blaze3d/textures/GpuTexture;D)V",
+                    "clearColorAndDepthTextures(Lcom/mojang/blaze3d/textures/GpuTexture;ILcom/mojang/blaze3d/textures/GpuTexture;DIIII)V",
+                    "clearDepthTexture"
+            },
+            at = @At("HEAD"),
+            argsOnly = true,
+            ordinal = 0
+    )
+    private double invertCreatDepthTextureDepthBuffer(double original) {
+        return 1.0 - original;
     }
 
     @ModifyExpressionValue(method = "applyPipelineState", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/pipeline/RenderPipeline;getDepthBiasConstant()F"))
