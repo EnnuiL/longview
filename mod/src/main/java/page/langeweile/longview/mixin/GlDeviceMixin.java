@@ -19,12 +19,13 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import page.langeweile.longview.api.LongviewDevice;
 
 import java.util.Set;
 
 // The most important mixin for the reverse Z depth buffer trick to properly function
 @Mixin(targets = "com.mojang.blaze3d.opengl.GlDevice")
-public class GlDeviceMixin {
+public class GlDeviceMixin implements LongviewDevice {
 	@Shadow
 	@Final
 	private static Logger LOGGER;

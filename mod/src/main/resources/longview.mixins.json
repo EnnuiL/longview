@@ -4,12 +4,11 @@
   "package": "page.langeweile.longview.mixin",
   "compatibilityLevel": "JAVA_25",
   "client": [
-    "CommandEncoderMixin",
     "GlCommandEncoderMixin",
     "GlConstMixin",
     "GlDeviceMixin",
     "ProjectionMixin",
-    "compat.CommandEncoderBackendMixin"
+    "compat.GpuDeviceMixin"
   ],
   "injectors": {
     "defaultRequire": 1

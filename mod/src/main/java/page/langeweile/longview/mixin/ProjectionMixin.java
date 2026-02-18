@@ -12,13 +12,13 @@ import net.minecraft.client.renderer.Projection;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import page.langeweile.longview.api.LongviewCommandEncoder;
+import page.langeweile.longview.api.LongviewDevice;
 
 @Mixin(Projection.class)
 public class ProjectionMixin {
 	@WrapOperation(method = "getMatrix", at = @At(value = "INVOKE", target = "Lorg/joml/Matrix4f;setPerspective(FFFFZ)Lorg/joml/Matrix4f;"))
 	private Matrix4f invertPerspectiveMatrixZ(Matrix4f instance, float fovy, float aspect, float zNear, float zFar, boolean zZeroToOne, Operation<Matrix4f> original) {
-		if (((LongviewCommandEncoder) RenderSystem.getDevice().createCommandEncoder()).supportsLongview()) {
+		if (((LongviewDevice) RenderSystem.getDevice()).supportsReverseZ()) {
 			return original.call(instance, fovy, aspect, zFar, zNear, zZeroToOne);
 		} else {
 			return original.call(instance, fovy, aspect, zNear, zFar, zZeroToOne);
@@ -27,7 +27,7 @@ public class ProjectionMixin {
 
 	@WrapOperation(method = "getMatrix", at = @At(value = "INVOKE", target = "Lorg/joml/Matrix4f;setOrtho(FFFFFFZ)Lorg/joml/Matrix4f;"))
 	private Matrix4f invertOrthogonalMatrixZ(Matrix4f instance, float left, float right, float bottom, float top, float zNear, float zFar, boolean zZeroToOne, Operation<Matrix4f> original) {
-		if (((LongviewCommandEncoder) RenderSystem.getDevice().createCommandEncoder()).supportsLongview()) {
+		if (((LongviewDevice) RenderSystem.getDevice()).supportsReverseZ()) {
 			return original.call(instance, left, right, bottom, top, zFar, zNear, zZeroToOne);
 		} else {
 			return original.call(instance, left, right, bottom, top, zNear, zFar, zZeroToOne);
