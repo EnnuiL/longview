@@ -28,7 +28,7 @@ java {
 // TODO - Abstract this into a separate project
 loom {
     mods {
-        register("backtrack") {
+        register("longview") {
             sourceSet("main")
         }
     }
