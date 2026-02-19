@@ -10,9 +10,12 @@
     "reverse_z.ProjectionMixin",
     "reverse_z.compat.GpuDeviceBackendMixin",
     "reverse_z.compat.GpuDeviceMixin",
+    "reverse_z.compat.cinnabar.Hg3DCommandEncoderMixin",
+    "reverse_z.compat.cinnabar.Hg3DGpuDeviceMixin",
+    "reverse_z.compat.cinnabar.HgRenderPipelineMixin",
     "zero_to_one.GlDeviceMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  }
 }

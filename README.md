@@ -20,6 +20,8 @@ This mod requires a device supporting either the `GL_ARB_CLIP_CONTROL` extension
 
 On devices that don't support either, like ones running macOS, Technique 2 will still be applied, although since the Z coordinate limits will remain as [-1,1], flipping them will do nothing at all considering said limit is effectively symmetric.
 
+While this mod only supports Minecraft's OpenGL backend, this mod is fully compatible with custom graphics backends and will do nothing by default, but this mod can implement support for them individually. Cinnabar is currently supported by Longview.
+
 ## Acknowledgements
 
 - [This Godot Engine blog post](https://godotengine.org/article/introducing-reverse-z/) for introducing me to the reverse Z technique.

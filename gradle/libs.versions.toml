@@ -1,9 +1,9 @@
 [versions]
 longview = "0.2.0"
 
-minecraft = "26.1-snapshot-8"
+minecraft = "26.1-snapshot-9"
 
-fabric_loom = "1.15.2"
+fabric_loom = "1.15.3"
 fabric_loader = "0.18.4"
 
 fabric_api = "0.143.5+26.1"
