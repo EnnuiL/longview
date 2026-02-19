@@ -1,6 +1,6 @@
 # Longview
 
-![Longview](https://cdn.modrinth.com/data/cached_images/90892d55de73134985fb69f4e644ce4dfb09ba93.png)
+![Longview](.docs/longview_banner.png)
 
 ![A comparison between having Longview installed and not having it installed. The cold pig is visibly jagged on the "Longview Off" shot and Z-fighting is visible on the waterlogged leaves. The "Longview On" shot shows the exact same scene but without the jaggies and with waterlogged leaves working as intended.](.docs/longview_comparison.webp)
 
