@@ -39,6 +39,8 @@ public abstract class GlCommandEncoderMixin implements LongviewDevice {
         return 1.0 - original;
     }
 
+    // The following methods ensure that things like text on glowing signs won't be ordered the wrong way
+
     @ModifyExpressionValue(method = "applyPipelineState", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/pipeline/RenderPipeline;getDepthBiasConstant()F"))
     private float invertDepthBiasConstant(float original) {
         return -original;

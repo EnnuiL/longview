@@ -20,7 +20,7 @@ public abstract class GlConstMixin {
 			args = "intValue=513"
 		)
 	)
-	private static int modifyLessDepthTestFunction(int original) {
+	private static int invertLessDepthTestFunction(int original) {
 		return GL11C.GL_GREATER;
 	}
 
@@ -31,7 +31,7 @@ public abstract class GlConstMixin {
 			args = "intValue=516"
 		)
 	)
-	private static int modifyGreaterDepthTestFunction(int original) {
+	private static int invertGreaterDepthTestFunction(int original) {
 		return GL11C.GL_LESS;
 	}
 
@@ -42,7 +42,7 @@ public abstract class GlConstMixin {
 			args = "intValue=515"
 		)
 	)
-	private static int modifyLequalDepthTestFunction(int original) {
+	private static int invertLequalDepthTestFunction(int original) {
 		return GL11C.GL_GEQUAL;
 	}
 

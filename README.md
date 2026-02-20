@@ -20,7 +20,7 @@ This mod requires a device supporting either the `GL_ARB_CLIP_CONTROL` extension
 
 On devices that don't support either, like ones running macOS, Technique 2 will still be applied, although since the Z coordinate limits will remain as [-1,1], flipping them will do nothing at all considering said limit is effectively symmetric.
 
-While this mod only supports Minecraft's OpenGL backend and the CinnamonVK custom backend, this mod is fully compatible with custom graphics backends and will do nothing by default, but this mod can implement support for them individually.
+While this mod only supports Minecraft's OpenGL backend and the CinnabarVK custom backend, this mod is fully compatible with custom graphics backends and will do nothing by default, but this mod can implement support for them individually.
 
 ## Acknowledgements
 
