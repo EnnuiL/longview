@@ -17,15 +17,4 @@ public abstract class GlDeviceMixin implements LongviewDevice {
 	public boolean supportsReverseZ() {
 		return true;
 	}
-
-	// This tries to only patch post/transparency.fsh so that it accounts for reversed Zs
-	// This fixes Improved Transparency
-	@ModifyExpressionValue(method = "compileShader", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/preprocessor/GlslPreprocessor;injectDefines(Ljava/lang/String;Lnet/minecraft/client/renderer/ShaderDefines;)Ljava/lang/String;"))
-	private String patchTransparencyFragmentShader(String original) {
-		if (original.contains("try_insert")) {
-			return original.replace("depth_layers[jj] > depth_layers[ii]", "depth_layers[jj] < depth_layers[ii]");
-		}
-
-		return original;
-	}
 }

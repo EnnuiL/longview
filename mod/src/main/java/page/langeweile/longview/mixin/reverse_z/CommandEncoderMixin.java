@@ -1,20 +1,16 @@
-/*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/.
- */
-package page.langeweile.longview.mixin.reverse_z.compat.cinnabar;
+package page.langeweile.longview.mixin.reverse_z;
 
+import com.mojang.blaze3d.systems.CommandEncoder;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import java.util.OptionalDouble;
 
-@Mixin(targets = "graphics.cinnabar.core.hg3d.Hg3DCommandEncoder")
-public class Hg3DCommandEncoderMixin {
+@Mixin(CommandEncoder.class)
+public class CommandEncoderMixin {
     @ModifyVariable(
-            method = "createRenderPass(Ljava/util/function/Supplier;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalInt;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalDouble;)Lcom/mojang/blaze3d/systems/RenderPassBackend;",
+            method = "createRenderPass(Ljava/util/function/Supplier;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalInt;Lcom/mojang/blaze3d/textures/GpuTextureView;Ljava/util/OptionalDouble;)Lcom/mojang/blaze3d/systems/RenderPass;",
             at = @At("HEAD"),
             argsOnly = true,
             ordinal = 0
