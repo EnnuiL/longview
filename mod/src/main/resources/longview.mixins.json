@@ -6,12 +6,8 @@
   "client": [
     "reverse_z.CommandEncoderMixin",
     "reverse_z.DepthStencilStateMixin",
-    "reverse_z.GlDeviceMixin",
     "reverse_z.MinecraftMixin",
     "reverse_z.ProjectionMixin",
-    "reverse_z.compat.GpuDeviceBackendMixin",
-    "reverse_z.compat.GpuDeviceMixin",
-    "reverse_z.compat.cinnabar.Hg3DGpuDeviceMixin",
     "zero_to_one.GlDeviceMixin"
   ],
   "injectors": {
