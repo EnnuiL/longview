@@ -1,16 +1,16 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "page.langeweile.longview.mixin",
-  "compatibilityLevel": "JAVA_25",
-  "client": [
-    "reverse_z.CommandEncoderMixin",
-    "reverse_z.DepthStencilStateMixin",
-    "reverse_z.MinecraftMixin",
-    "reverse_z.ProjectionMixin",
-    "zero_to_one.GlDeviceMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  }
+	"required": true,
+	"minVersion": "0.8",
+	"package": "page.langeweile.longview.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"reverse_z.CommandEncoderMixin",
+		"reverse_z.DepthStencilStateMixin",
+		"reverse_z.MinecraftMixin",
+		"reverse_z.ProjectionMixin",
+		"zero_to_one.GlDeviceMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
 }

@@ -1,55 +1,55 @@
 plugins {
-    `java-library`
-    alias(libs.plugins.fabric.loom)
+	`java-library`
+	alias(libs.plugins.fabric.loom)
 }
 
 base {
-    archivesName = "longview"
+	archivesName = "longview"
 }
 
 group = "page.langeweile"
 version = libs.versions.longview.get()
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
-    minecraft(libs.minecraft)
-    runtimeOnly(libs.fabric.loader)
+	minecraft(libs.minecraft)
+	runtimeOnly(libs.fabric.loader)
 }
 
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
-    }
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
 }
 
 // TODO - Abstract this into a separate project
 loom {
-    mods {
-        register("longview") {
-            sourceSet("main")
-        }
-    }
+	mods {
+		register("longview") {
+			sourceSet("main")
+		}
+	}
 
-    runs {
-        named("client") {
-            client()
-            configName = "Fabric Client"
-            ideConfigGenerated(true)
-            runDir("run")
-        }
-    }
+	runs {
+		named("client") {
+			client()
+			configName = "Fabric Client"
+			ideConfigGenerated(true)
+			runDir("run")
+		}
+	}
 }
 
 tasks.processResources {
-    filteringCharset = "UTF-8"
+	filteringCharset = "UTF-8"
 
-    val version = project.version
-    inputs.property("version", version)
+	val version = project.version
+	inputs.property("version", version)
 
-    filesMatching(listOf("fabric.mod.json", "META-INF/neoforge.mods.toml")) {
-        expand("version" to version)
-    }
+	filesMatching(listOf("fabric.mod.json", "META-INF/neoforge.mods.toml")) {
+		expand("version" to version)
+	}
 }

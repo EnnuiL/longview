@@ -17,7 +17,7 @@
 	"environment": "client",
 	"entrypoints": {},
 	"mixins": [
-      "longview.mixins.json"
+		"longview.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.18.4",
