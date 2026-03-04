@@ -1,12 +1,12 @@
 [versions]
 longview = "0.4.0"
 
-minecraft = "26.1-snapshot-10"
+minecraft = "26.1-snapshot-11"
 
 fabric_loom = "1.15.3"
 fabric_loader = "0.18.4"
 
-fabric_api = "0.143.6+26.1"
+fabric_api = "0.143.10+26.1"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
