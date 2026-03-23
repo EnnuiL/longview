@@ -14,6 +14,7 @@ authors = "Ennui Langeweile"
 description = """
 Fixes flickering, jaggies and Z-fighting on long distances using the Reverse Z technique.
 """
+updateJSONURL = "https://api.modrinth.com/updates/4lDrPSXX/forge_updates.json?neoforge=only"
 
 [[dependencies.longview]]
 modId = "neoforge"
