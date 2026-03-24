@@ -1,18 +1,18 @@
 [versions]
 longview = "1.0.0"
 
-minecraft = "26.1-rc-3"
+minecraft = "26.1"
 
 fabric_loom = "1.15.5"
 fabric_loader = "0.18.4"
 
-fabric_api = "0.143.15+26.1"
+#fabric_api = "0.143.15+26.1"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 fabric_loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric_loader" }
 
-fabric_api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric_api" }
+#fabric_api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric_api" }
 
 [plugins]
 fabric_loom = { id = "net.fabricmc.fabric-loom", version.ref = "fabric_loom" }
