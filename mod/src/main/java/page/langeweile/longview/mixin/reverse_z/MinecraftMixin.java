@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public abstract class MinecraftMixin {
 	@ModifyReturnValue(method = "lambda$new$2", at = @At("TAIL"))
 	private String modifyShader(String original, @Local(argsOnly = true) Identifier id, @Local(argsOnly = true) ShaderType type) {
+		// TODO - It's about time we introduce the REVERSE_Z builtin
 		if (type == ShaderType.FRAGMENT) {
 			if (id.getPath().contains("transparency")) {
 				if (original.contains("try_insert")) {

@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import page.langeweile.longview.impl.LongviewImpl;
 
 @Mixin(DepthStencilState.class)
 public abstract class DepthStencilStateMixin {
@@ -24,6 +25,8 @@ public abstract class DepthStencilStateMixin {
 		@Local(argsOnly = true, ordinal = 0) LocalFloatRef depthBiasScaleFactor,
 		@Local(argsOnly = true, ordinal = 1) LocalFloatRef depthBiasConstant
 	) {
+		if (!LongviewImpl.isZReversed()) return;
+
 		depthTest.set(
 			switch (depthTest.get()) {
 				case LESS_THAN -> CompareOp.GREATER_THAN;

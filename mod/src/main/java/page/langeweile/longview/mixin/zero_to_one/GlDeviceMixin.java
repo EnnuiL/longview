@@ -18,6 +18,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import page.langeweile.longview.impl.LongviewImpl;
 
 import java.util.Set;
 
@@ -35,8 +36,10 @@ public abstract class GlDeviceMixin {
 	@Inject(method = "<init>", at = @At("TAIL"))
 	private void useArbClipControl(long windowHandle, ShaderSource defaultShaderSource, GpuDebugOptions debugOptions, CallbackInfo ci, @Local GLCapabilities capabilities) {
 		if (capabilities.GL_ARB_clip_control) {
-			GL45.glClipControl(GL45.GL_LOWER_LEFT, GL45.GL_ZERO_TO_ONE);
 			this.enabledExtensions.add("GL_ARB_clip_control");
+			if (LongviewImpl.isZZeroToOne()) {
+				GL45.glClipControl(GL45.GL_LOWER_LEFT, GL45.GL_ZERO_TO_ONE);
+			}
 		} else {
 			LOGGER.warn("[Longview] This device does not support the GL_ARB_clip_control extension! The Z depth buffers remain reversed but no improvements will be visible.");
 		}
@@ -44,6 +47,6 @@ public abstract class GlDeviceMixin {
 
 	@ModifyReturnValue(method = "isZZeroToOne", at = @At("TAIL"))
 	private boolean enableZZeroToOne(boolean original) {
-		return original || this.enabledExtensions.contains("GL_ARB_clip_control");
+		return original || (LongviewImpl.isZZeroToOne() && this.enabledExtensions.contains("GL_ARB_clip_control"));
 	}
 }

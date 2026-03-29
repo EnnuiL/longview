@@ -9,6 +9,7 @@ import com.mojang.blaze3d.systems.CommandEncoder;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import page.langeweile.longview.impl.LongviewImpl;
 
 import java.util.OptionalDouble;
 
@@ -21,7 +22,9 @@ public class CommandEncoderMixin {
 		ordinal = 0
 	)
 	private OptionalDouble invertCreateRenderPassDepthBuffer(OptionalDouble original) {
-		return original.isPresent() ? OptionalDouble.of(1.0 - original.getAsDouble()) : original;
+		return original.isPresent()
+			? LongviewImpl.isZReversed() ? OptionalDouble.of(1.0 - original.getAsDouble()) : original
+			: original;
 	}
 
 	@ModifyVariable(
@@ -34,7 +37,7 @@ public class CommandEncoderMixin {
 		argsOnly = true,
 		ordinal = 0
 	)
-	private double invertCreatDepthTextureDepthBuffer(double original) {
-		return 1.0 - original;
+	private double invertClearDepthTextureDepthBuffer(double original) {
+		return LongviewImpl.isZReversed() ? 1.0 - original : original;
 	}
 }
