@@ -15,7 +15,6 @@
 	"icon": "assets/longview/icon.png",
 	"license": "MPL-2.0",
 	"environment": "client",
-	"entrypoints": {},
 	"mixins": [
 		"longview.mixins.json"
 	],

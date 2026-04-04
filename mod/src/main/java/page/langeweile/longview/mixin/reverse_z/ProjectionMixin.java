@@ -10,11 +10,30 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.client.renderer.Projection;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import page.langeweile.longview.impl.LongviewImpl;
 
 @Mixin(Projection.class)
 public abstract class ProjectionMixin {
+	@Shadow
+	private boolean isMatrixDirty;
+
+	@Unique
+	private boolean reverseZ;
+
+	// Ensure that if Reverse Z is toggled, then
+	@Inject(method = { "setupPerspective", "setupOrtho" }, at = @At("HEAD"))
+	private void detectReverseZChange(CallbackInfo ci) {
+		if (this.reverseZ != LongviewImpl.isZReversed()) {
+			this.reverseZ = LongviewImpl.isZReversed();
+			this.isMatrixDirty = true;
+		}
+	}
+
 	@WrapOperation(method = "getMatrix", at = @At(value = "INVOKE", target = "Lorg/joml/Matrix4f;setPerspective(FFFFZ)Lorg/joml/Matrix4f;"))
 	private Matrix4f invertPerspectiveMatrixZ(Matrix4f instance, float fovy, float aspect, float zNear, float zFar, boolean zZeroToOne, Operation<Matrix4f> original) {
 		return LongviewImpl.isZReversed() ? original.call(instance, fovy, aspect, zFar, zNear, zZeroToOne)
