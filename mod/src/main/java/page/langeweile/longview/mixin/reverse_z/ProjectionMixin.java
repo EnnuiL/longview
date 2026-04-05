@@ -25,7 +25,7 @@ public abstract class ProjectionMixin {
 	@Unique
 	private boolean reverseZ;
 
-	// Ensure that if Reverse Z is toggled, then
+	// Ensure that if Reverse Z is toggled, then the matrix should be recomputed
 	@Inject(method = { "setupPerspective", "setupOrtho" }, at = @At("HEAD"))
 	private void detectReverseZChange(CallbackInfo ci) {
 		if (this.reverseZ != LongviewImpl.isZReversed()) {

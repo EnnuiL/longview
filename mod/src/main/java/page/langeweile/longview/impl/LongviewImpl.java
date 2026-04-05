@@ -1,3 +1,8 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
 package page.langeweile.longview.impl;
 
 import org.lwjgl.opengl.GL45;
@@ -5,6 +10,8 @@ import page.langeweile.longview.mixin.reverse_z.compat.iris.IrisApiAccessor;
 
 public class LongviewImpl {
 	private static final Object IRIS_API_INSTANCE;
+
+	private static boolean supportsGlClipControl = false;
 
 	static {
 		Object instance;
@@ -16,7 +23,7 @@ public class LongviewImpl {
 		IRIS_API_INSTANCE = instance;
 	}
 
-	public static boolean isZZeroToOne() {
+	public static boolean isGlZZeroToOne() {
 		return !isIrisActive();
 	}
 
@@ -32,6 +39,10 @@ public class LongviewImpl {
 		return false;
 	}
 
+	public static void markGlClipControlSupport() {
+		LongviewImpl.supportsGlClipControl = true;
+	}
+
 	private static Class<?> getClass(String className) {
 		try {
 			return Class.forName(className);
@@ -41,10 +52,12 @@ public class LongviewImpl {
 	}
 
 	public static void toggleZZeroToOne(boolean zZeroToOne) {
-		if (zZeroToOne) {
-			GL45.glClipControl(GL45.GL_LOWER_LEFT, GL45.GL_ZERO_TO_ONE);
-		} else {
-			GL45.glClipControl(GL45.GL_LOWER_LEFT, GL45.GL_NEGATIVE_ONE_TO_ONE);
+		if (LongviewImpl.supportsGlClipControl) {
+			if (zZeroToOne) {
+				GL45.glClipControl(GL45.GL_LOWER_LEFT, GL45.GL_ZERO_TO_ONE);
+			} else {
+				GL45.glClipControl(GL45.GL_LOWER_LEFT, GL45.GL_NEGATIVE_ONE_TO_ONE);
+			}
 		}
 	}
 }

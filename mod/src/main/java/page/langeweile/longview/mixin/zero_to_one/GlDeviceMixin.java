@@ -37,7 +37,8 @@ public abstract class GlDeviceMixin {
 	private void useArbClipControl(long windowHandle, ShaderSource defaultShaderSource, GpuDebugOptions debugOptions, CallbackInfo ci, @Local GLCapabilities capabilities) {
 		if (capabilities.GL_ARB_clip_control) {
 			this.enabledExtensions.add("GL_ARB_clip_control");
-			if (LongviewImpl.isZZeroToOne()) {
+			LongviewImpl.markGlClipControlSupport();
+			if (LongviewImpl.isGlZZeroToOne()) {
 				GL45.glClipControl(GL45.GL_LOWER_LEFT, GL45.GL_ZERO_TO_ONE);
 			}
 		} else {
@@ -47,6 +48,6 @@ public abstract class GlDeviceMixin {
 
 	@ModifyReturnValue(method = "isZZeroToOne", at = @At("TAIL"))
 	private boolean enableZZeroToOne(boolean original) {
-		return original || (LongviewImpl.isZZeroToOne() && this.enabledExtensions.contains("GL_ARB_clip_control"));
+		return original || (LongviewImpl.isGlZZeroToOne() && this.enabledExtensions.contains("GL_ARB_clip_control"));
 	}
 }
