@@ -26,6 +26,6 @@ side = "CLIENT"
 [[dependencies.longview]]
 modId = "minecraft"
 type = "required"
-versionRange = "[26.0,)"
+versionRange = "[26.0,26.2)"
 ordering = "NONE"
 side = "CLIENT"

@@ -4,13 +4,14 @@
 	"package": "page.langeweile.longview.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"client": [
-		"reverse_z.compat.iris.IrisApiAccessor",
 		"reverse_z.CommandEncoderMixin",
 		"reverse_z.DepthStencilStateMixin",
 		"reverse_z.MinecraftMixin",
 		"reverse_z.ProjectionMixin",
-		"zero_to_one.compat.iris.PipelineManagerMixin",
-		"zero_to_one.GlDeviceMixin"
+		"reverse_z.compat.define.ShaderDefinesMixin",
+		"reverse_z.compat.iris.IrisApiAccessor",
+		"zero_to_one.GlDeviceMixin",
+		"zero_to_one.compat.iris.PipelineManagerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
