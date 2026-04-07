@@ -1,16 +1,15 @@
-name: Build Mod
-
+name: Publish New Release
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+      - '*'
+
+env:
+  TAG: ${{ github.ref_name }}
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-24.04
-    permissions:
-      contents: read
 
     steps:
       - uses: actions/checkout@v6
@@ -26,8 +25,9 @@ jobs:
       - name: Build with Gradle Wrapper
         run: ./gradlew build
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v7
-        with:
-          name: longview_artifacts
-          path: mod/build/libs/
+      - name: Publish on mod platforms
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+        run: ./gradlew publishMods

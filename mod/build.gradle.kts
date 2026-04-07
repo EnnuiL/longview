@@ -1,6 +1,7 @@
 plugins {
 	`java-library`
 	alias(libs.plugins.fabric.loom)
+	alias(libs.plugins.mod.publish.plugin)
 }
 
 base {
@@ -51,5 +52,28 @@ tasks.processResources {
 
 	filesMatching(listOf("fabric.mod.json", "META-INF/neoforge.mods.toml")) {
 		expand("version" to version)
+	}
+}
+
+publishMods {
+	file = tasks.named<Jar>("jar").get().archiveFile
+	modLoaders = listOf("fabric", "neoforge")
+	changelog = "To Be Updated"
+	type = STABLE
+
+	github {
+		accessToken = providers.environmentVariable("GITHUB_TOKEN")
+		repository = "EnnuiL/longview"
+		commitish = "main"
+	}
+
+	modrinth {
+		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+		projectId = "4lDrPSXX"
+	}
+
+	curseforge {
+		accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+		projectId = "1465234"
 	}
 }
