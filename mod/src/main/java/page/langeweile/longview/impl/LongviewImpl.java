@@ -6,7 +6,7 @@
 package page.langeweile.longview.impl;
 
 import org.lwjgl.opengl.GL45;
-import page.langeweile.longview.mixin.reverse_z.compat.iris.IrisApiAccessor;
+import page.langeweile.longview.mixin.compat.iris.IrisApiAccessor;
 
 public class LongviewImpl {
 	private static final Object IRIS_API_INSTANCE;

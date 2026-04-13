@@ -24,6 +24,8 @@ java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(25)
 	}
+
+	withSourcesJar()
 }
 
 // TODO - Abstract this into a separate project
