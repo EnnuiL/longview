@@ -16,7 +16,7 @@ import page.langeweile.longview.impl.LongviewImpl;
 public abstract class ShaderDefinesMixin {
 	@ModifyReturnValue(method = "builder", at = @At("TAIL"))
 	private static ShaderDefines.Builder addLongviewDefine(ShaderDefines.Builder original) {
-		if (RenderSystem.getDevice().isZZeroToOne()) {
+		if (LongviewImpl.isGlZZeroToOne() || (RenderSystem.tryGetDevice() != null && RenderSystem.tryGetDevice().isZZeroToOne())) {
 			original.define("Z_ZERO_TO_ONE");
 		}
 
