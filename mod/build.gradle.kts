@@ -63,19 +63,23 @@ publishMods {
 	changelog = "To Be Updated"
 	type = STABLE
 
+	/*
 	github {
 		accessToken = providers.environmentVariable("GITHUB_TOKEN")
 		repository = "EnnuiL/longview"
 		commitish = "main"
 	}
+	 */
 
 	modrinth {
 		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
 		projectId = "4lDrPSXX"
+		minecraftVersions.addAll(listOf("26.1", "26.1.1", "26.1.2"))
 	}
 
 	curseforge {
 		accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
 		projectId = "1465234"
+		minecraftVersions.addAll(listOf("26.1", "26.1.1", "26.1.2"))
 	}
 }
