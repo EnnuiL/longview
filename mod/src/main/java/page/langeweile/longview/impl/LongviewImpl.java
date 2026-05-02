@@ -5,8 +5,8 @@
  */
 package page.langeweile.longview.impl;
 
+import net.irisshaders.iris.api.v0.IrisApi;
 import org.lwjgl.opengl.GL45;
-import page.langeweile.longview.mixin.compat.iris.IrisApiAccessor;
 
 public class LongviewImpl {
 	private static final Object IRIS_API_INSTANCE;
@@ -33,7 +33,7 @@ public class LongviewImpl {
 
 	private static boolean isIrisActive() {
 		if (IRIS_API_INSTANCE != null) {
-			return ((IrisApiAccessor) IRIS_API_INSTANCE).callIsShaderPackInUse();
+			return ((IrisApi) IRIS_API_INSTANCE).isShaderPackInUse();
 		}
 
 		return false;

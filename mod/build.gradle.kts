@@ -18,6 +18,8 @@ repositories {
 dependencies {
 	minecraft(libs.minecraft)
 	runtimeOnly(libs.fabric.loader)
+
+	compileOnly(project(":stubs"))
 }
 
 java {

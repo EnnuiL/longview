@@ -9,7 +9,6 @@
 		"reverse_z.DepthStencilStateMixin",
 		"reverse_z.MinecraftMixin",
 		"reverse_z.ProjectionMixin",
-		"compat.iris.IrisApiAccessor",
 		"zero_to_one.GlDeviceMixin",
 		"zero_to_one.compat.iris.PipelineManagerMixin"
 	],

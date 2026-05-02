@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "longview"
-include("mod")
+include("mod", "stubs")
