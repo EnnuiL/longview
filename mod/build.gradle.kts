@@ -60,6 +60,7 @@ tasks.processResources {
 }
 
 publishMods {
+	displayName = "Longview"
 	file = tasks.named<Jar>("jar").get().archiveFile
 	modLoaders = listOf("fabric", "neoforge")
 	changelog = "To Be Updated"
@@ -83,5 +84,8 @@ publishMods {
 		accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
 		projectId = "1465234"
 		minecraftVersions.addAll(listOf("26.1", "26.1.1", "26.1.2"))
+		javaVersions.addAll(listOf(JavaVersion.VERSION_25))
+		clientRequired = true
+		changelogType = "markdown"
 	}
 }
