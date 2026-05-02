@@ -5,6 +5,7 @@
 	"compatibilityLevel": "JAVA_25",
 	"client": [
 		"compat.define.ShaderDefinesMixin",
+		"compat.distanthorizons.Mat4fMixin",
 		"reverse_z.CommandEncoderMixin",
 		"reverse_z.DepthStencilStateMixin",
 		"reverse_z.MinecraftMixin",
