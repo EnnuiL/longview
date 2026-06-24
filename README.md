@@ -4,7 +4,7 @@
 
 ![A comparison between having Longview installed and not having it installed. The cold pig is visibly jagged on the "Longview Off" shot and Z-fighting is visible on the waterlogged leaves. The "Longview On" shot shows the exact same scene but without the jaggies and with waterlogged leaves working as intended.](.docs/longview_comparison.webp)
 
-Longview is a mod that fixes glitches such as Z-fighting and jaggies on far distances.
+Longview is a mod for Minecraft 26.1 that fixes glitches such as Z-fighting and jaggies on far distances.
 
 This is accomplished through two techniques:
 1) By changing the Z coordinate limits from [-1,1] to [0,1] using the `GL_ARB_CLIP_CONTROL` extension (officially part of OpenGL 4.5)
@@ -16,9 +16,13 @@ This mod is available on [Modrinth](https://modrinth.com/mod/longview) and [Curs
 
 ## Compatibility
 
+This mod is no longer needed in Minecraft 26.2+ since the game has implemented the same fixes that Longview implements! This mod will continue to work in Minecraft 26.1.
+
 This mod requires a device supporting either the `GL_ARB_CLIP_CONTROL` extension or OpenGL 4.5 in order to apply Technique 1.
 
 On devices that don't support either, like ones running macOS, Technique 2 will still be applied, although since the Z coordinate limits will remain as [-1,1], flipping them will do nothing at all considering said limit is effectively symmetric.
+
+As of Longview 1.1.0, this mod is semi-compatible with [Iris Shaders](https://modrinth.com/mod/iris) and it will disable itself if a shader pack is active. Proper compatibility will be worked on in the future.
 
 This mod is fully compatible with custom graphics backends and will implement Technique 2 by default, although said custom backends are required to implement Technique 1 themselves.
 
