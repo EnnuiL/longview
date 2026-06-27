@@ -19,7 +19,7 @@ dependencies {
 	minecraft(libs.minecraft)
 	runtimeOnly(libs.fabric.loader)
 
-	compileOnly(project(":stubs"))
+	compileOnly(rootProject.project("stubs"))
 }
 
 java {
@@ -60,19 +60,11 @@ tasks.processResources {
 }
 
 publishMods {
-	displayName = "Longview"
+	displayName.set("Longview ${version}")
 	file = tasks.named<Jar>("jar").get().archiveFile
 	modLoaders = listOf("fabric", "neoforge")
 	changelog = "To Be Updated"
 	type = STABLE
-
-	/*
-	github {
-		accessToken = providers.environmentVariable("GITHUB_TOKEN")
-		repository = "EnnuiL/longview"
-		commitish = "main"
-	}
-	 */
 
 	modrinth {
 		accessToken = providers.environmentVariable("MODRINTH_TOKEN")

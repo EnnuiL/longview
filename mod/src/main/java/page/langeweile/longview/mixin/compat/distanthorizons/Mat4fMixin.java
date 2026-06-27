@@ -12,13 +12,14 @@ import com.seibel.distanthorizons.api.objects.math.DhApiMat4f;
 import org.spongepowered.asm.mixin.Mixin;
 import page.langeweile.longview.impl.LongviewImpl;
 
+// This mixin applies only to Distant Horizons 3.0.0.
 // Them reimplementing Minecraft 1.16.5's Mat4f class is *horrid*, but we do what we must do.
 @Mixin(targets = "com.seibel.distanthorizons.core.util.math.Mat4f")
 public abstract class Mat4fMixin extends DhApiMat4f {
 	// The "perspective" method is unused, we won't bother with it
 
-	@WrapMethod(method = "setClipPlanes")
-	public void swapClipPlanes(float nearClip, float farClip, Operation<Object> original) {
+	@WrapMethod(method = "setClipPlanes(FF)V")
+	public void swapClipPlanes3_0(float nearClip, float farClip, Operation<Object> original) {
 		boolean reverseZ = LongviewImpl.isZReversed();
 		boolean zZeroToOne = RenderSystem.getDevice().isZZeroToOne();
 
