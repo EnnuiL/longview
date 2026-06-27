@@ -6,7 +6,6 @@
 	"client": [
 		"compat.define.ShaderDefinesMixin",
 		"compat.distanthorizons.GlDhRenderApiDefinitionMixin",
-		"compat.distanthorizons.Mat4fMixin",
 		"compat.distanthorizons.RenderUtilMixin",
 		"reverse_z.CommandEncoderMixin",
 		"reverse_z.DepthStencilStateMixin",

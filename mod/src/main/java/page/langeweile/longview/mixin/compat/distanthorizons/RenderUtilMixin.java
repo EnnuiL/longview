@@ -14,8 +14,8 @@ import page.langeweile.longview.impl.LongviewImpl;
 
 @Mixin(targets = "com.seibel.distanthorizons.core.util.RenderUtil")
 public class RenderUtilMixin {
-	@WrapMethod(method = "setClipPlanes(Lcom/seibel/distanthorizons/api/objects/math/DhApiMat4f;FFZ)V", require = 0)
-	private static void swapClipPlanes3_1(DhApiMat4f matrix, float nearClip, float farClip, boolean zZeroToOne, Operation<Object> original) {
+	@WrapMethod(method = "setClipPlanes(Lcom/seibel/distanthorizons/api/objects/math/DhApiMat4f;FFZ)V")
+	private static void swapClipPlanes(DhApiMat4f matrix, float nearClip, float farClip, boolean zZeroToOne, Operation<Object> original) {
 		if (LongviewImpl.isZReversed()) {
 			float buf = nearClip;
 			nearClip = farClip;
