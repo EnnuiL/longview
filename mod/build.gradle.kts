@@ -58,7 +58,7 @@ tasks.processResources {
 }
 
 publishMods {
-	displayName.set("Longview ${version}")
+	displayName.set("Longview ${version.get()}")
 	file = tasks.named<Jar>("jar").get().archiveFile
 	modLoaders = listOf("fabric", "neoforge")
 	changelog = "To Be Updated"
