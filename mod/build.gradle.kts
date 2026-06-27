@@ -41,9 +41,7 @@ loom {
 	runs {
 		named("client") {
 			client()
-			configName = "Fabric Client"
-			ideConfigGenerated(true)
-			runDir("run")
+			displayName = "Fabric Client"
 		}
 	}
 }
@@ -70,6 +68,7 @@ publishMods {
 		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
 		projectId = "4lDrPSXX"
 		minecraftVersions.addAll(listOf("26.1", "26.1.1", "26.1.2"))
+		environment = CLIENT_ONLY
 	}
 
 	curseforge {
@@ -77,7 +76,7 @@ publishMods {
 		projectId = "1465234"
 		minecraftVersions.addAll(listOf("26.1", "26.1.1", "26.1.2"))
 		javaVersions.addAll(listOf(JavaVersion.VERSION_25))
-		clientRequired = true
+		client = true
 		changelogType = "markdown"
 	}
 }

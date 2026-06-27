@@ -3,7 +3,7 @@ longview = "1.2.2"
 
 minecraft = "26.1.2"
 
-mod_publish_plugin = "1.1.0"
+mod_publish_plugin = "2.1.0"
 
 fabric_loom = "1.17.12"
 fabric_loader = "0.19.3"
