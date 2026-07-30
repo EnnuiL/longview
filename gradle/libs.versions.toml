@@ -3,9 +3,9 @@ longview = "1.2.2"
 
 minecraft = "26.1.2"
 
-mod_publish_plugin = "2.1.0"
+mod_publish_plugin = "2.2.0"
 
-fabric_loom = "1.17.12"
+fabric_loom = "1.17.17"
 fabric_loader = "0.19.3"
 
 #fabric_api = "0.143.15+26.1"
