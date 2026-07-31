@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package page.langeweile.longview.mixin.zero_to_one.compat.iris;
+package page.langeweile.longview.mixin.compat.iris;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import org.spongepowered.asm.mixin.Mixin;
@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import page.langeweile.longview.impl.LongviewImpl;
 
+// TODO - Investigate a way to enforce a clean refresh
 @Mixin(targets = "net.irisshaders.iris.pipeline.PipelineManager")
 public class PipelineManagerMixin {
 	@Inject(

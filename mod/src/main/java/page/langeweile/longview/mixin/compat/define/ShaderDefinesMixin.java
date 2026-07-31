@@ -16,12 +16,13 @@ import page.langeweile.longview.impl.LongviewImpl;
 public abstract class ShaderDefinesMixin {
 	@ModifyReturnValue(method = "builder", at = @At("TAIL"))
 	private static ShaderDefines.Builder addLongviewDefine(ShaderDefines.Builder original) {
-		if (LongviewImpl.isGlZZeroToOne() || (RenderSystem.tryGetDevice() != null && RenderSystem.tryGetDevice().isZZeroToOne())) {
-			original.define("Z_ZERO_TO_ONE");
-		}
-
 		if (LongviewImpl.isZReversed()) {
 			original.define("REVERSE_Z");
+		}
+
+		// TODO - Consider whether to support Minecraft 26.3's B3D_IS_ZERO_TO_ONE/RENDERPEARL_IS_ZERO_TO_ONE or not
+		if (LongviewImpl.isGlZZeroToOne() || (RenderSystem.tryGetDevice() != null && RenderSystem.tryGetDevice().isZZeroToOne())) {
+			original.define("Z_ZERO_TO_ONE");
 		}
 
 		return original;

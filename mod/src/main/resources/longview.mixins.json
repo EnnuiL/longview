@@ -7,12 +7,18 @@
 		"compat.define.ShaderDefinesMixin",
 		"compat.distanthorizons.GlDhRenderApiDefinitionMixin",
 		"compat.distanthorizons.RenderUtilMixin",
+		"compat.iris.HandRendererMixin",
+		"compat.iris.IrisRenderingPipelineMixin",
+		"compat.iris.PackDirectivesMixin",
+		"compat.iris.PipelineManagerMixin",
+		"compat.iris.ShaderPropertiesMixin",
+		"compat.iris.StandardMacrosMixin",
+		"compat.iris.VanillaRenderingPipeline",
 		"reverse_z.CommandEncoderMixin",
 		"reverse_z.DepthStencilStateMixin",
 		"reverse_z.MinecraftMixin",
 		"reverse_z.ProjectionMixin",
-		"zero_to_one.GlDeviceMixin",
-		"zero_to_one.compat.iris.PipelineManagerMixin"
+		"zero_to_one.GlDeviceMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

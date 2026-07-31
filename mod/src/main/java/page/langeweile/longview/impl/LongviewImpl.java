@@ -5,50 +5,29 @@
  */
 package page.langeweile.longview.impl;
 
-import net.irisshaders.iris.api.v0.IrisApi;
 import org.lwjgl.opengl.GL45;
 
 public class LongviewImpl {
-	private static final Object IRIS_API_INSTANCE;
-
 	private static boolean supportsGlClipControl = false;
 
-	static {
-		Object instance;
-		try {
-			instance = LongviewImpl.getClass("net.irisshaders.iris.api.v0.IrisApi").getMethod("getInstance").invoke(null);
-		} catch (Exception e) {
-			instance = null;
-		}
-		IRIS_API_INSTANCE = instance;
-	}
+	private static boolean enableIrisReverseZ = true;
+	private static boolean enableIrisZZeroToOne = true;
 
 	public static boolean isGlZZeroToOne() {
-		return !isIrisActive();
+		return enableIrisReverseZ;
 	}
 
 	public static boolean isZReversed() {
-		return !isIrisActive();
+		return enableIrisZZeroToOne;
 	}
 
-	private static boolean isIrisActive() {
-		if (IRIS_API_INSTANCE != null) {
-			return ((IrisApi) IRIS_API_INSTANCE).isShaderPackInUse();
-		}
-
-		return false;
+	public static void setIrisLongview(boolean reverseZ, boolean zZeroToOne) {
+		LongviewImpl.enableIrisReverseZ = reverseZ;
+		LongviewImpl.enableIrisZZeroToOne = zZeroToOne;
 	}
 
 	public static void markGlClipControlSupport() {
 		LongviewImpl.supportsGlClipControl = true;
-	}
-
-	private static Class<?> getClass(String className) {
-		try {
-			return Class.forName(className);
-		} catch (ClassNotFoundException e) {
-			return null;
-		}
 	}
 
 	public static void toggleZZeroToOne(boolean zZeroToOne) {
