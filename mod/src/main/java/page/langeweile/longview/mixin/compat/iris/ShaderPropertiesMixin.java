@@ -18,7 +18,7 @@ import page.langeweile.longview.impl.compat.LongviewShaderProperties;
 import java.util.function.Consumer;
 
 @Mixin(targets = "net.irisshaders.iris.shaderpack.properties.ShaderProperties")
-public class ShaderPropertiesMixin implements LongviewShaderProperties {
+public abstract class ShaderPropertiesMixin implements LongviewShaderProperties {
 	@Unique
 	private OptionalBoolean longviewEnableReverseZ = OptionalBoolean.DEFAULT;
 

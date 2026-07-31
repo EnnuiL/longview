@@ -21,7 +21,7 @@ public abstract class ShaderDefinesMixin {
 		}
 
 		// TODO - Consider whether to support Minecraft 26.3's B3D_IS_ZERO_TO_ONE/RENDERPEARL_IS_ZERO_TO_ONE or not
-		if (LongviewImpl.isGlZZeroToOne() || (RenderSystem.tryGetDevice() != null && RenderSystem.tryGetDevice().isZZeroToOne())) {
+		if (LongviewImpl.isGlZZeroToOne() && (RenderSystem.tryGetDevice() != null && RenderSystem.tryGetDevice().isZZeroToOne())) {
 			original.define("Z_ZERO_TO_ONE");
 		}
 

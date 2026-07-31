@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import page.langeweile.longview.impl.LongviewImpl;
 
 @Mixin(targets = "net.irisshaders.iris.pathways.HandRenderer")
-public class HandRendererMixin {
+public abstract class HandRendererMixin {
 	@ModifyArg(
 		method = "setupGlState",
 		at = @At(
@@ -22,6 +22,7 @@ public class HandRendererMixin {
 		index = 2
 	)
 	private float modifyDepth(float original) {
+		// TODO - Can we get away with just Reverse Z-based adjustments?
 		boolean reverseZ = LongviewImpl.isZReversed();
 		boolean zZeroToOne = LongviewImpl.isGlZZeroToOne() && (RenderSystem.tryGetDevice() != null && RenderSystem.tryGetDevice().isZZeroToOne());
 		if (reverseZ && zZeroToOne) {

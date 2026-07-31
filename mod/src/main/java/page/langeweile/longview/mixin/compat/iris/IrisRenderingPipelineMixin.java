@@ -15,7 +15,7 @@ import page.langeweile.longview.impl.LongviewImpl;
 import page.langeweile.longview.impl.compat.LongviewPackDirectives;
 
 @Mixin(targets = "net.irisshaders.iris.pipeline.IrisRenderingPipeline")
-public class IrisRenderingPipelineMixin {
+public abstract class IrisRenderingPipelineMixin {
 	@Inject(
 		method = "<init>(Lnet/irisshaders/iris/shaderpack/programs/ProgramSet;)V",
 		at = @At(

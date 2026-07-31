@@ -14,6 +14,8 @@
 		"compat.iris.StandardMacrosMixin",
 		"compat.iris.VanillaRenderingPipeline",
 		"compat.voxelmap.VMCOPMBMixin",
+		"debug.DebugScreenEntriesMixin",
+		"debug.DebugScreenEntryListMixin",
 		"reverse_z.CommandEncoderMixin",
 		"reverse_z.DepthStencilStateMixin",
 		"reverse_z.MinecraftMixin",

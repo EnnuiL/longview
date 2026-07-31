@@ -14,11 +14,15 @@ public class LongviewImpl {
 	private static boolean enableIrisZZeroToOne = true;
 
 	public static boolean isGlZZeroToOne() {
-		return enableIrisReverseZ;
+		return enableIrisZZeroToOne;
+	}
+
+	public static boolean supportsGlClipControl() {
+		return supportsGlClipControl;
 	}
 
 	public static boolean isZReversed() {
-		return enableIrisZZeroToOne;
+		return enableIrisReverseZ;
 	}
 
 	public static void setIrisLongview(boolean reverseZ, boolean zZeroToOne) {

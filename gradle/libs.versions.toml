@@ -1,4 +1,5 @@
 [versions]
+# Don't forget about DebugEntryLongview
 longview = "1.3.0"
 
 minecraft = "26.1.2"

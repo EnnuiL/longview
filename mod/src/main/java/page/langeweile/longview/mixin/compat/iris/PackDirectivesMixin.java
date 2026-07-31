@@ -17,7 +17,7 @@ import page.langeweile.longview.impl.compat.LongviewShaderProperties;
 import java.util.Set;
 
 @Mixin(targets = "net.irisshaders.iris.shaderpack.properties.PackDirectives")
-public class PackDirectivesMixin implements LongviewPackDirectives {
+public abstract class PackDirectivesMixin implements LongviewPackDirectives {
 	@Unique
 	private boolean longviewEnableReverseZ = false;
 

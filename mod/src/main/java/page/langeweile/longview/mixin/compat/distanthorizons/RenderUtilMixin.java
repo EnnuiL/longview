@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import page.langeweile.longview.impl.LongviewImpl;
 
 @Mixin(targets = "com.seibel.distanthorizons.core.util.RenderUtil")
-public class RenderUtilMixin {
+public abstract class RenderUtilMixin {
 	@WrapMethod(method = "setClipPlanes(Lcom/seibel/distanthorizons/api/objects/math/DhApiMat4f;FFZ)V")
 	private static void swapClipPlanes(DhApiMat4f matrix, float nearClip, float farClip, boolean zZeroToOne, Operation<Object> original) {
 		if (LongviewImpl.isZReversed()) {

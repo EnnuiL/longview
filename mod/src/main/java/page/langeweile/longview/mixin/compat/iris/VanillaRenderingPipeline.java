@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import page.langeweile.longview.impl.LongviewImpl;
 
 @Mixin(targets = "net.irisshaders.iris.pipeline.VanillaRenderingPipeline")
-public class VanillaRenderingPipeline {
+public abstract class VanillaRenderingPipeline {
 	@Inject(method = "<init>()V", at = @At("HEAD"))
 	private static void enableLongview(CallbackInfo ci) {
 		LongviewImpl.setIrisLongview(true, true);
