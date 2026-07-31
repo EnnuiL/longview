@@ -28,5 +28,10 @@ public class IrisRenderingPipelineMixin {
 			((LongviewPackDirectives) programSet.getPackDirectives()).enableReverseZ(),
 			((LongviewPackDirectives) programSet.getPackDirectives()).enableZZeroToOne()
 		);
+
+		// This is only applicable to the OpenGL backend
+		if (RenderSystem.tryGetDevice() != null && RenderSystem.tryGetDevice().getBackendName().equals("OpenGL")) {
+			LongviewImpl.toggleZZeroToOne(LongviewImpl.isGlZZeroToOne());
+		}
 	}
 }
