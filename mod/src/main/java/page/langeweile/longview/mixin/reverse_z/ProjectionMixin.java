@@ -36,13 +36,15 @@ public abstract class ProjectionMixin {
 
 	@WrapOperation(method = "getMatrix", at = @At(value = "INVOKE", target = "Lorg/joml/Matrix4f;setPerspective(FFFFZ)Lorg/joml/Matrix4f;"))
 	private Matrix4f invertPerspectiveMatrixZ(Matrix4f instance, float fovy, float aspect, float zNear, float zFar, boolean zZeroToOne, Operation<Matrix4f> original) {
-		return LongviewImpl.isZReversed() ? original.call(instance, fovy, aspect, zFar, zNear, zZeroToOne)
+		return LongviewImpl.isZReversed()
+			? original.call(instance, fovy, aspect, zFar, zNear, zZeroToOne)
 			: original.call(instance, fovy, aspect, zNear, zFar, zZeroToOne);
 	}
 
 	@WrapOperation(method = "getMatrix", at = @At(value = "INVOKE", target = "Lorg/joml/Matrix4f;setOrtho(FFFFFFZ)Lorg/joml/Matrix4f;"))
 	private Matrix4f invertOrthogonalMatrixZ(Matrix4f instance, float left, float right, float bottom, float top, float zNear, float zFar, boolean zZeroToOne, Operation<Matrix4f> original) {
-		return LongviewImpl.isZReversed() ? original.call(instance, left, right, bottom, top, zFar, zNear, zZeroToOne)
+		return LongviewImpl.isZReversed()
+			? original.call(instance, left, right, bottom, top, zFar, zNear, zZeroToOne)
 			: original.call(instance, left, right, bottom, top, zNear, zFar, zZeroToOne);
 	}
 }

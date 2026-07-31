@@ -14,6 +14,7 @@
 		"compat.iris.ShaderPropertiesMixin",
 		"compat.iris.StandardMacrosMixin",
 		"compat.iris.VanillaRenderingPipeline",
+		"compat.voxelmap.VMCOPMBMixin",
 		"reverse_z.CommandEncoderMixin",
 		"reverse_z.DepthStencilStateMixin",
 		"reverse_z.MinecraftMixin",
