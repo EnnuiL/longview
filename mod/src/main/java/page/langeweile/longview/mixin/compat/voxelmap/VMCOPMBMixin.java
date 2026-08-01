@@ -21,7 +21,7 @@ public abstract class VMCOPMBMixin {
 	)
 	private Matrix4f invertOrthogonalMatrixZ(Matrix4f instance, float left, float right, float bottom, float top, float zNear, float zFar, Operation<Matrix4f> original) {
 		return LongviewImpl.isZReversed()
-			? instance.ortho(left, right, bottom, top, zFar, zNear, RenderSystem.getDevice().isZZeroToOne())
-			: instance.ortho(left, right, bottom, top, zNear, zFar, RenderSystem.getDevice().isZZeroToOne());
+			? instance.setOrtho(left, right, bottom, top, zFar, zNear, RenderSystem.getDevice().isZZeroToOne())
+			: instance.setOrtho(left, right, bottom, top, zNear, zFar, RenderSystem.getDevice().isZZeroToOne());
 	}
 }
