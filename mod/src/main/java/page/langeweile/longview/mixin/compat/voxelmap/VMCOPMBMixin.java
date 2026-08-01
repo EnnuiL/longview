@@ -16,7 +16,7 @@ public abstract class VMCOPMBMixin {
 		method = "<init>",
 		at = @At(
 			value = "INVOKE",
-			target = "Lorg/joml/Matrix4f;setOrtho(FFFFFF)Lorg/joml/Matrix4f;"
+			target = "Lorg/joml/Matrix4f;ortho(FFFFFF)Lorg/joml/Matrix4f;"
 		)
 	)
 	private Matrix4f invertOrthogonalMatrixZ(Matrix4f instance, float left, float right, float bottom, float top, float zNear, float zFar, Operation<Matrix4f> original) {
