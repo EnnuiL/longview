@@ -22,7 +22,7 @@ This mod requires a device supporting either the `GL_ARB_CLIP_CONTROL` extension
 
 On devices that don't support either, like ones running macOS, Technique 2 will still be applied, although since the Z coordinate limits will remain as [-1,1], flipping them will do nothing at all considering said limit is effectively symmetric.
 
-As of Longview 1.1.0, this mod is semi-compatible with [Iris Shaders](https://modrinth.com/mod/iris) and it will disable itself if a shader pack is active. Proper compatibility will be worked on in the future.
+As of Longview 1.3.0, this mod is compatible with [Iris Shaders](https://modrinth.com/mod/iris) when using shader packs that support it. If the shader pack doesn't support Longview, then this mod will disable itself temporarily, as shown in the F3 debug information.
 
 This mod is fully compatible with custom graphics backends and will implement Technique 2 by default, although said custom backends are required to implement Technique 1 themselves.
 
