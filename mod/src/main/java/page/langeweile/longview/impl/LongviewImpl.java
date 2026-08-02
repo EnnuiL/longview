@@ -30,7 +30,7 @@ public class LongviewImpl {
 		if (LongviewImpl.enableIrisZZeroToOne != zZeroToOne) {
 			// This is only applicable to the OpenGL backend
 			if (RenderSystem.tryGetDevice() != null && RenderSystem.tryGetDevice().getBackendName().equals("OpenGL")) {
-				LongviewImpl.toggleZZeroToOne(LongviewImpl.isGlZZeroToOne());
+				LongviewImpl.toggleZZeroToOne(zZeroToOne);
 			}
 		}
 

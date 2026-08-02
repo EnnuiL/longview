@@ -21,7 +21,7 @@ public class DebugEntryLongview implements DebugScreenEntry {
 	@Override
 	public void display(DebugScreenDisplayer displayer, @Nullable Level serverOrClientLevel, @Nullable LevelChunk clientChunk, @Nullable LevelChunk serverChunk) {
 		// TODO - Automate this
-		displayer.addToGroup(GROUP, "Longview 1.3.0");
+		displayer.addToGroup(GROUP, "Longview 1.3.1");
 		displayer.addToGroup(GROUP, String.format("Reverse Z: %s", LongviewImpl.isZReversed() ? "enabled" : "disabled"));
 		displayer.addToGroup(GROUP, renderZeroToOneZ());
 	}
