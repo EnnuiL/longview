@@ -5,6 +5,7 @@
  */
 package page.langeweile.longview.impl;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import org.lwjgl.opengl.GL45;
 
 public class LongviewImpl {
@@ -26,6 +27,13 @@ public class LongviewImpl {
 	}
 
 	public static void setIrisLongview(boolean reverseZ, boolean zZeroToOne) {
+		if (LongviewImpl.enableIrisZZeroToOne != zZeroToOne) {
+			// This is only applicable to the OpenGL backend
+			if (RenderSystem.tryGetDevice() != null && RenderSystem.tryGetDevice().getBackendName().equals("OpenGL")) {
+				LongviewImpl.toggleZZeroToOne(LongviewImpl.isGlZZeroToOne());
+			}
+		}
+
 		LongviewImpl.enableIrisReverseZ = reverseZ;
 		LongviewImpl.enableIrisZZeroToOne = zZeroToOne;
 	}

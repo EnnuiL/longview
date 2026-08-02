@@ -17,10 +17,5 @@ public abstract class VanillaRenderingPipeline {
 	@Inject(method = "<init>()V", at = @At("HEAD"))
 	private static void enableLongview(CallbackInfo ci) {
 		LongviewImpl.setIrisLongview(true, true);
-
-		// This is only applicable to the OpenGL backend
-		if (RenderSystem.tryGetDevice() != null && RenderSystem.tryGetDevice().getBackendName().equals("OpenGL")) {
-			LongviewImpl.toggleZZeroToOne(LongviewImpl.isGlZZeroToOne());
-		}
 	}
 }
