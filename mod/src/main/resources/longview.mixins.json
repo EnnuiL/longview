@@ -12,6 +12,7 @@
 		"compat.iris.IrisRenderingPipelineMixin",
 		"compat.iris.PackDirectivesMixin",
 		"compat.iris.ShaderPropertiesMixin",
+		"compat.iris.ShadowMatricesMixin",
 		"compat.iris.StandardMacrosMixin",
 		"compat.iris.VanillaRenderingPipeline",
 		"compat.voxelmap.VMCOPMBMixin",
